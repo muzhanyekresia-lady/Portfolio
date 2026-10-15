@@ -1,51 +1,99 @@
 /**
  * TANYA — PORTFOLIO JAVASCRIPT
- * Vanilla JS | 0 Dependencies | GitHub & Vercel Ready
+ * Vanilla JS | 0 Dependencies | Fully Responsive
+ *
+ * Editable Profile Configuration:
+ * Easily update your social media handles and phone numbers below.
  */
 
+window.PORTFOLIO_CONFIG = {
+  name: "Tanya Muzhanye",
+  role: "Digital Marketing Specialist & Product Designer",
+  phone: "+263774102310",
+  email: "muzhanyekresia@gmail.com",
+  location: "Harare, Zimbabwe",
+  linkedin: "https://www.linkedin.com/in/kresia-tanyaradzwa-muzhanye-00634527a",
+  github: "https://github.com/muzhanyekresia-lady",
+  whatsapp: "https://wa.me/263774102310",
+  // Editable social media profiles (Tanya can edit these anytime):
+  instagram: "https://instagram.com",
+  behance: "https://behance.net"
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Apply configured links if elements exist
+  const igLink = document.getElementById('socialLinkInstagram');
+  if (igLink && window.PORTFOLIO_CONFIG.instagram) {
+    igLink.href = window.PORTFOLIO_CONFIG.instagram;
+  }
+  const behanceLink = document.getElementById('socialLinkBehance');
+  if (behanceLink && window.PORTFOLIO_CONFIG.behance) {
+    behanceLink.href = window.PORTFOLIO_CONFIG.behance;
+  }
+
   // -------------------------------------------------------------------------
-  // 1. Navigation & Mobile Menu
+  // 1. Navigation & Mobile Menu (Full Accessibility & Body Lock)
   // -------------------------------------------------------------------------
   const hamburger = document.getElementById('navHamburger');
   const mobileMenu = document.getElementById('mobileMenu');
-  const navLinks = document.querySelectorAll('.nav-link, .mobile-link');
+  const navLinks = document.querySelectorAll('.nav-link, .mobile-link, .mobile-btn');
   const siteNav = document.getElementById('siteNav');
 
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
+  function closeMobileNav() {
+    if (hamburger && mobileMenu) {
+      hamburger.classList.remove('is-active');
+      mobileMenu.classList.remove('is-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function toggleMobileNav() {
+    if (hamburger && mobileMenu) {
       const isOpen = hamburger.classList.toggle('is-active');
       mobileMenu.classList.toggle('is-open', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      // Lock background scroll when open on mobile
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+  }
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileNav();
     });
 
-    // Close mobile menu when a link is clicked
+    // Close mobile menu when any navigation link or action button is clicked
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        hamburger.classList.remove('is-active');
-        mobileMenu.classList.remove('is-open');
-        hamburger.setAttribute('aria-expanded', 'false');
+        closeMobileNav();
       });
     });
 
-    // Close on click outside
+    // Close on click outside navbar & drawer
     document.addEventListener('click', (e) => {
       if (!siteNav.contains(e.target) && !mobileMenu.contains(e.target)) {
-        hamburger.classList.remove('is-active');
-        mobileMenu.classList.remove('is-open');
-        hamburger.setAttribute('aria-expanded', 'false');
+        closeMobileNav();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+        closeMobileNav();
       }
     });
   }
 
-  // Scroll effect on navbar
+  // Navbar shadow on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       siteNav.classList.add('scrolled');
     } else {
       siteNav.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 
   // -------------------------------------------------------------------------
   // 2. Active Section Highlighting via IntersectionObserver
@@ -56,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if ('IntersectionObserver' in window && sections.length > 0) {
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -60% 0px',
+      rootMargin: '-20% 0px -55% 0px',
       threshold: 0
     };
 
@@ -65,8 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entry.isIntersecting) {
           const currentId = entry.target.getAttribute('id');
           navItems.forEach(item => {
-            const href = item.getAttribute('href').replace('#', '');
-            if (href === currentId) {
+            const href = item.getAttribute('href');
+            if (href && href.replace('#', '') === currentId) {
               item.classList.add('active');
             } else {
               item.classList.remove('active');
@@ -80,22 +128,70 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // -------------------------------------------------------------------------
-  // 3. Service Cards Interactive Expansion
+  // 3. Project Category Filtering
+  // -------------------------------------------------------------------------
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  if (filterBtns.length > 0 && projectCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selectedFilter = btn.getAttribute('data-filter');
+
+        // Update active filter button
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        // Filter cards
+        projectCards.forEach(card => {
+          const categoryAttr = card.getAttribute('data-category') || '';
+          const categories = categoryAttr.split(' ');
+
+          if (selectedFilter === 'all' || categories.includes(selectedFilter)) {
+            card.classList.remove('is-hidden');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 50);
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+  }
+
+  // -------------------------------------------------------------------------
+  // 4. Service Cards Interactive Expansion
   // -------------------------------------------------------------------------
   const serviceCards = document.querySelectorAll('.service-card');
   serviceCards.forEach(card => {
     card.addEventListener('click', () => {
       const isExpanded = card.classList.contains('expanded');
-      // Collapse other open service cards
+      // Collapse other cards
       serviceCards.forEach(c => c.classList.remove('expanded'));
       if (!isExpanded) {
         card.classList.add('expanded');
       }
     });
+
+    // Keyboard accessibility for cards
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
   });
 
   // -------------------------------------------------------------------------
-  // 4. Modal System (Contact, Project Details, Story)
+  // 5. Modal System (Contact, Project Details, CV Viewer, Story)
   // -------------------------------------------------------------------------
   const modals = document.querySelectorAll('.modal-backdrop');
   const openModalBtns = document.querySelectorAll('[data-modal-target]');
@@ -106,13 +202,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (targetModal) {
       targetModal.classList.add('is-active');
       document.body.style.overflow = 'hidden';
+
+      // Focus first actionable element inside modal
+      const focusable = targetModal.querySelector('button, [href], input, textarea, [tabindex="0"]');
+      if (focusable) {
+        setTimeout(() => focusable.focus(), 100);
+      }
     }
   }
 
   function closeModal(modal) {
     if (modal) {
       modal.classList.remove('is-active');
-      document.body.style.overflow = '';
+      // Only unlock scroll if mobile nav isn't open
+      const isMobileNavOpen = mobileMenu && mobileMenu.classList.contains('is-open');
+      if (!isMobileNavOpen) {
+        document.body.style.overflow = '';
+      }
     }
   }
 
@@ -147,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // -------------------------------------------------------------------------
-  // 5. Contact Form Validation & Submission
+  // 6. Contact Form Validation & Submission
   // -------------------------------------------------------------------------
   const contactForm = document.getElementById('contactForm');
   const formFeedback = document.getElementById('formFeedback');
@@ -178,20 +284,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const submitBtn = contactForm.querySelector('.btn-send');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = 'Sending message…';
+      const originalContent = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span>Sending message…</span>';
       submitBtn.disabled = true;
 
-      // Simulate clean local submission with feedback
+      // Simulated local submission feedback
       setTimeout(() => {
         if (formFeedback) {
-          formFeedback.textContent = "Thank you, " + name + "! Your message has been sent. I'll get back to you shortly.";
+          formFeedback.textContent = "Thank you, " + name + "! Your message has been sent. I will get back to you shortly.";
           formFeedback.className = 'form-feedback success';
         }
         contactForm.reset();
-        submitBtn.innerHTML = originalText;
+        submitBtn.innerHTML = originalContent;
         submitBtn.disabled = false;
-      }, 700);
+      }, 600);
     });
   }
 });

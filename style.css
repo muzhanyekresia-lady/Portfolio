@@ -1233,3 +1233,299 @@ h1, h2, h3, h4 {
     gap: 32px;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   ADDITIONAL ENHANCEMENTS: CV MODAL, PROJECT FILTERS, MOBILE POLISH
+   -------------------------------------------------------------------------- */
+
+/* Button variant */
+.btn-secondary-outline {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-light-pure);
+  border: 1.5px solid var(--color-border-warm);
+}
+
+.btn-secondary-outline:hover {
+  background-color: rgba(255, 255, 255, 0.22);
+  border-color: var(--color-light-pure);
+  transform: translateY(-2px);
+}
+
+/* Touch targets */
+.nav-hamburger {
+  width: 44px;
+  height: 44px;
+  padding: 10px 6px;
+}
+
+.nav-hamburger span {
+  width: calc(100% - 12px);
+  left: 6px;
+}
+.nav-hamburger span:nth-child(1) { top: 12px; }
+.nav-hamburger span:nth-child(2) { top: 21px; }
+.nav-hamburger span:nth-child(3) { top: 30px; }
+
+.nav-hamburger.is-active span:nth-child(1) {
+  top: 21px;
+  transform: rotate(135deg);
+}
+.nav-hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+  left: -20px;
+}
+.nav-hamburger.is-active span:nth-child(3) {
+  top: 21px;
+  transform: rotate(-135deg);
+}
+
+/* Mobile drawer CV actions */
+.mobile-cv-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mobile-btn {
+  width: 100%;
+  min-height: 48px;
+}
+
+/* Project header row and category filters */
+.projects-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.project-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+
+.filter-btn {
+  background-color: rgba(42, 31, 23, 0.35);
+  color: var(--color-cream);
+  border: 1.5px solid var(--color-border-warm);
+  padding: 9px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-btn:hover {
+  background-color: rgba(42, 31, 23, 0.65);
+  color: var(--color-light-pure);
+  border-color: var(--color-light-pure);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary-dark);
+  color: var(--color-light-pure);
+  border-color: var(--color-light-pure);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* Project card badges & actions */
+.project-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+}
+
+.project-category-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(157, 111, 58, 0.45);
+  color: var(--color-light-pure);
+  border: 1px solid rgba(247, 239, 225, 0.25);
+}
+
+.project-role-tag {
+  font-size: 0.82rem;
+  color: var(--color-cream-muted);
+  font-style: italic;
+  font-family: var(--font-editorial);
+}
+
+.project-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(247, 239, 225, 0.12);
+  flex-wrap: wrap;
+}
+
+.project-cta.external-cta {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-warm);
+}
+
+.project-cta.external-cta:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--color-light-pure);
+}
+
+.project-card {
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), opacity 0.3s ease;
+}
+
+.project-card.is-hidden {
+  display: none !important;
+}
+
+/* CV Modal */
+.cv-modal-dialog {
+  max-width: 860px;
+  width: 95%;
+  padding: 36px 36px 28px;
+}
+
+.modal-header-compact {
+  margin-bottom: 12px;
+}
+
+.cv-embed-container {
+  width: 100%;
+  height: 520px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border-warm);
+  background-color: #2A1F17;
+  margin: 16px 0;
+}
+
+.cv-embed-container object,
+.cv-embed-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.cv-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Contact detail items */
+.detail-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-cream-muted);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.contact-link {
+  color: var(--color-light-pure);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contact-link:hover {
+  color: var(--color-cream);
+}
+
+.sep-dot {
+  margin: 0 8px;
+  opacity: 0.6;
+}
+
+.whatsapp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(72, 187, 120, 0.2);
+  border: 1px solid rgba(72, 187, 120, 0.4);
+  color: #9AE6B4;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  text-decoration: none !important;
+}
+
+.whatsapp-pill:hover {
+  background-color: rgba(72, 187, 120, 0.35);
+  color: #FFFFFF;
+}
+
+.footer-social-link {
+  min-height: 44px;
+  padding: 8px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile specific styling down to 320px */
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+  .hero-actions .btn {
+    width: 100%;
+  }
+  .cv-embed-container {
+    height: 360px;
+  }
+  .cv-modal-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cv-modal-actions .btn {
+    width: 100%;
+  }
+  .modal-dialog {
+    padding: 28px 20px;
+  }
+  .container {
+    padding: 0 18px;
+  }
+}

@@ -3,15 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tanya — Digital Marketing Specialist & Product Designer Portfolio based in Harare, Zimbabwe. SEO, social media strategies, campaigns, and product design that convert.">
+  <meta name="description" content="Tanya Muzhanye — Digital Marketing Specialist & Product Designer Portfolio based in Harare, Zimbabwe. SEO, social media strategies, brand identities, and product design that convert.">
+  <meta name="theme-color" content="#9D6F3A">
   <title>Tanya — Digital Marketing & Product Design Portfolio</title>
-  
+
+  <!-- Favicons (SVG, PNG, Apple Touch Icon, ICO) -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="shortcut icon" href="assets/favicon.ico">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Stylesheet (Relative Path) -->
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,8 +29,8 @@
        ========================================================================= -->
   <header class="site-nav" id="siteNav">
     <div class="container nav-container">
-      <a href="#hero" class="nav-logo">Portfolio</a>
-      
+      <a href="#hero" class="nav-logo" aria-label="Tanya Portfolio Home">Portfolio</a>
+
       <!-- Desktop Navigation Links -->
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="#about" class="nav-link">About</a>
@@ -30,14 +38,14 @@
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#case-studies" class="nav-link">Case Studies</a>
         <a href="#contact" class="nav-link">Contact</a>
-        <a href="assets/Tanya-CV.pdf" download class="nav-cta">
+        <button type="button" class="nav-cta" data-modal-target="cvModal" title="View CV">
           <span>CV</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
-        </a>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </button>
       </nav>
 
       <!-- Mobile Hamburger Button -->
-      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span>
         <span></span>
         <span></span>
@@ -45,13 +53,16 @@
     </div>
 
     <!-- Mobile Navigation Drawer -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile Navigation">
       <a href="#about" class="nav-link mobile-link">About</a>
       <a href="#services" class="nav-link mobile-link">Services</a>
       <a href="#projects" class="nav-link mobile-link">Projects</a>
       <a href="#case-studies" class="nav-link mobile-link">Case Studies</a>
       <a href="#contact" class="nav-link mobile-link">Contact</a>
-      <a href="assets/Tanya-CV.pdf" download class="btn btn-primary" style="margin-top: 10px;">Download CV</a>
+      <div class="mobile-cv-actions">
+        <button type="button" class="btn btn-outline mobile-btn" data-modal-target="cvModal">View CV</button>
+        <a href="assets/Tanya-CV.pdf" download="Tanya-Muzhanye-CV.pdf" class="btn btn-primary mobile-btn">Download CV</a>
+      </div>
     </div>
   </header>
 
@@ -70,9 +81,16 @@
           </p>
           <div class="hero-actions">
             <button type="button" class="btn btn-outline" data-modal-target="contactModal">Contact Me</button>
-            <a href="assets/Tanya-CV.pdf" download class="btn btn-primary">View CV</a>
-            <a href="assets/Tanya-CV.pdf" download class="btn-download-icon" aria-label="Quick download CV" title="Quick download CV">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <button type="button" class="btn btn-primary" data-modal-target="cvModal" id="heroViewCvBtn" title="View CV in browser">
+              <span>View CV</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+            <a href="assets/Tanya-CV.pdf" download="Tanya-Muzhanye-CV.pdf" class="btn btn-secondary-outline" id="heroDownloadCvBtn" title="Download CV (PDF)">
+              <span>Download CV</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                 <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/>
               </svg>
             </a>
@@ -81,7 +99,7 @@
 
         <div class="hero-portrait-wrap">
           <div class="hero-portrait-frame">
-            <img src="assets/images/hero-portrait.png" alt="Tanya — Digital Marketing Specialist & Designer" width="512" height="378">
+            <img src="assets/images/hero-portrait.png" alt="Tanya Muzhanye — Digital Marketing Specialist & Product Designer" width="512" height="378" loading="eager">
             <div class="hero-status-pill">
               <span class="status-dot"></span>
               <span>Available for work</span>
@@ -99,11 +117,11 @@
         <!-- Left: Circular Visual Composition -->
         <div class="about-art-composition">
           <div class="about-circle-frame">
-            <img src="assets/images/about-composition.png" alt="African Echoes Design Artwork" width="520" height="520">
+            <img src="assets/images/about-composition.png" alt="African Echoes Design Artwork composition by Tanya" width="520" height="520" loading="lazy">
           </div>
-          <div class="about-bubble about-bubble-1"></div>
-          <div class="about-bubble about-bubble-2"></div>
-          <div class="about-bubble about-bubble-3"></div>
+          <div class="about-bubble about-bubble-1" aria-hidden="true"></div>
+          <div class="about-bubble about-bubble-2" aria-hidden="true"></div>
+          <div class="about-bubble about-bubble-3" aria-hidden="true"></div>
         </div>
 
         <!-- Right: Text & Pill Tags -->
@@ -118,15 +136,15 @@
           <p class="about-text" style="font-size: 1.22rem; margin-top: -10px;">
             I’m building my career at the intersection of digital marketing and product design, creating thoughtful solutions while expanding my knowledge and skills.
           </p>
-          <div class="about-tags">
+          <div class="about-tags" aria-label="Key Competencies">
             <span class="tag-pill">Brand</span>
             <span class="tag-pill">SEO</span>
             <span class="tag-pill">Marketing</span>
             <span class="tag-pill">Analytics</span>
           </div>
           <div style="margin-top: 24px;">
-            <button type="button" class="btn btn-outline" style="font-size: 0.9rem; padding: 8px 18px;" data-modal-target="storyModal">
-              Read my full story →
+            <button type="button" class="btn btn-outline" style="font-size: 0.95rem; padding: 10px 22px;" data-modal-target="storyModal">
+              Read my full story &rarr;
             </button>
           </div>
         </div>
@@ -147,7 +165,7 @@
           <!-- Service 1 -->
           <article class="service-card" tabindex="0">
             <div class="service-card-header">
-              <div class="service-icon-circle">
+              <div class="service-icon-circle" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
@@ -166,7 +184,7 @@
           <!-- Service 2 -->
           <article class="service-card" tabindex="0">
             <div class="service-card-header">
-              <div class="service-icon-circle">
+              <div class="service-icon-circle" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -186,7 +204,7 @@
           <!-- Service 3 -->
           <article class="service-card" tabindex="0">
             <div class="service-card-header">
-              <div class="service-icon-circle">
+              <div class="service-icon-circle" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 19l7-7 3 3-7 7-3-3z"/>
                   <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
@@ -207,7 +225,7 @@
           <!-- Service 4 -->
           <article class="service-card" tabindex="0">
             <div class="service-card-header">
-              <div class="service-icon-circle">
+              <div class="service-icon-circle" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="10"></circle>
                   <circle cx="12" cy="12" r="6"></circle>
@@ -228,7 +246,7 @@
           <!-- Service 5 -->
           <article class="service-card" tabindex="0">
             <div class="service-card-header">
-              <div class="service-icon-circle">
+              <div class="service-icon-circle" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
                   <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
@@ -248,7 +266,7 @@
           <!-- Service 6 -->
           <article class="service-card" tabindex="0">
             <div class="service-card-header">
-              <div class="service-icon-circle">
+              <div class="service-icon-circle" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
@@ -272,64 +290,188 @@
     </section>
 
     <!-- =========================================================================
-         5. FEATURED PROJECTS SECTION
+         5. FEATURED PROJECTS SECTION (WITH CATEGORY BROWSING)
          ========================================================================= -->
     <section class="projects-section section-padding bg-warm-gold" id="projects">
       <div class="container">
-        <div class="section-title-wrap align-right">
-          <h2 class="section-title">Featured Projects</h2>
-          <span class="title-underline"></span>
+        <div class="projects-header-row">
+          <div class="section-title-wrap">
+            <h2 class="section-title">Featured Projects</h2>
+            <span class="title-underline"></span>
+          </div>
+
+          <!-- Category Filter Tabs -->
+          <div class="project-filters" role="tablist" aria-label="Browse projects by category">
+            <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Projects</button>
+            <button type="button" class="filter-btn" data-filter="digital-marketing" role="tab" aria-selected="false">Digital Marketing</button>
+            <button type="button" class="filter-btn" data-filter="product-design" role="tab" aria-selected="false">Product Design</button>
+            <button type="button" class="filter-btn" data-filter="case-studies" role="tab" aria-selected="false">Case Studies</button>
+          </div>
         </div>
 
-        <div class="projects-grid">
-          <!-- Project Card 1: Digital Marketing -->
-          <article class="project-card">
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Project 1: Do Right Contractors (Digital Marketing) -->
+          <article class="project-card" data-category="digital-marketing">
             <div class="project-image-wrap">
-              <img src="assets/images/project-digital-marketing.jpg" alt="Digital Marketing Campaign Overview" width="400" height="280">
+              <img src="assets/images/project-doright.png" alt="Do Right Contractors security fencing and steel fabrication campaign" width="400" height="280" loading="lazy">
             </div>
             <div class="project-content-wrap">
-              <h3 class="project-title">Digital Marketing</h3>
+              <div class="project-badge-row">
+                <span class="project-category-badge">Digital Marketing</span>
+                <span class="project-role-tag">Sales & Marketing Intern</span>
+              </div>
+              <h3 class="project-title">Do Right Contractors</h3>
               <p class="project-description">
-                Campaigns and brand work that drives measurable growth.
+                Promotional campaigns, construction & steel fabrication marketing materials, customer-focused copywriting, and lead-generation outreach in Harare.
               </p>
-              <a href="#case-studies" class="project-cta" data-modal-target="projectModal1">
-                <span>View Projects</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
+              <div class="project-card-actions">
+                <button type="button" class="project-cta" data-modal-target="dorightModal">
+                  <span>View Details</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </button>
+              </div>
             </div>
           </article>
 
-          <!-- Project Card 2: Product Design -->
-          <article class="project-card">
+          <!-- Project 2: Endless Treats with Tee (Digital Marketing) -->
+          <article class="project-card" data-category="digital-marketing">
             <div class="project-image-wrap">
-              <img src="assets/images/project-product-design.png" alt="Samaita Meats Product & Brand Collateral Design" width="400" height="280">
+              <img src="assets/images/project-endless-treats.png" alt="Endless Treats with Tee branded candy skewers and campaign banner" width="400" height="280" loading="lazy">
             </div>
             <div class="project-content-wrap">
-              <h3 class="project-title">Product Design</h3>
+              <div class="project-badge-row">
+                <span class="project-category-badge">Digital Marketing</span>
+                <span class="project-role-tag">Brand & Marketing Strategist</span>
+              </div>
+              <h3 class="project-title">Endless Treats with Tee</h3>
               <p class="project-description">
-                Interfaces, flyers and business cards shaped by research.
+                Brand identity, visual consistency, social media content strategy for Instagram & TikTok, promotional graphics, and direct WhatsApp sales funnel.
               </p>
-              <a href="#case-studies" class="project-cta" data-modal-target="projectModal2">
-                <span>View Projects</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
+              <div class="project-card-actions">
+                <button type="button" class="project-cta" data-modal-target="endlessModal">
+                  <span>View Details</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </button>
+              </div>
             </div>
           </article>
 
-          <!-- Project Card 3: Case Studies -->
-          <article class="project-card">
+          <!-- Project 3: Samaita Meats (Product Design / Case Studies) -->
+          <article class="project-card" data-category="product-design case-studies">
             <div class="project-image-wrap">
-              <img src="assets/images/project-case-studies.png" alt="Glent Worth Farm Case Study & Web Strategy" width="400" height="280">
+              <img src="assets/images/project-samaita-meats.png" alt="Samaita Meats brand identity poster and packaging collateral" width="400" height="280" loading="lazy">
             </div>
             <div class="project-content-wrap">
-              <h3 class="project-title">Case Studies</h3>
+              <div class="project-badge-row">
+                <span class="project-category-badge">Product Design</span>
+                <span class="project-role-tag">Tagline: “Fresh cuts, trusted quality.”</span>
+              </div>
+              <h3 class="project-title">Samaita Meats</h3>
               <p class="project-description">
-                Deep dives into problems, process and outcomes.
+                Brand book, visual identity, packaging, promotional flyers, and retail marketing materials that translate customer trust into high-converting butcher shop assets.
               </p>
-              <a href="#case-studies" class="project-cta" data-modal-target="projectModal3">
-                <span>View Projects</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7h10v10"/></svg>
-              </a>
+              <div class="project-card-actions">
+                <button type="button" class="project-cta" data-modal-target="projectModal2">
+                  <span>View Brand Book</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: Glent Worth Farm (Product Design / Case Studies) -->
+          <article class="project-card" data-category="product-design case-studies">
+            <div class="project-image-wrap">
+              <img src="assets/images/project-glentworth.png" alt="Glent Worth Farm responsive showcase website" width="400" height="280" loading="lazy">
+            </div>
+            <div class="project-content-wrap">
+              <div class="project-badge-row">
+                <span class="project-category-badge">Product Design</span>
+                <span class="project-role-tag">Website Design & Development</span>
+              </div>
+              <h3 class="project-title">Glent Worth Farm</h3>
+              <p class="project-description">
+                Responsive showcase website and digital ordering system for a heritage farm in Norton, Zimbabwe, featuring organic produce, oyster mushrooms, and venue bookings.
+              </p>
+              <div class="project-card-actions">
+                <a href="https://glent-worth.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-cta external-cta" title="Visit live website">
+                  <span>Live Site</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                </a>
+                <button type="button" class="project-cta" data-modal-target="projectModal3">
+                  <span>Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5: Vivid Horizons Zimbabwe (Product Design) -->
+          <article class="project-card" data-category="product-design">
+            <div class="project-image-wrap">
+              <img src="assets/images/project-vivid-horizons.png" alt="Vivid Horizons Zimbabwe Travel Agency landing page interface" width="400" height="280" loading="lazy">
+            </div>
+            <div class="project-content-wrap">
+              <div class="project-badge-row">
+                <span class="project-category-badge">Product Design</span>
+                <span class="project-role-tag">Travel Agency Landing Page</span>
+              </div>
+              <h3 class="project-title">Vivid Horizons Zimbabwe</h3>
+              <p class="project-description">
+                Travel agency landing page shaped by research. Visual hierarchy, curated safari tour booking flows, responsive layout, and intuitive travel discovery experience.
+              </p>
+              <div class="project-card-actions">
+                <button type="button" class="project-cta" data-modal-target="vividModal">
+                  <span>View Project</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6: Safe Nest (Case Studies) -->
+          <article class="project-card" data-category="case-studies">
+            <div class="project-image-wrap">
+              <img src="assets/images/project-safe-nest.png" alt="Safe Nest Childcare Trust-Based Marketplace UX architecture" width="400" height="280" loading="lazy">
+            </div>
+            <div class="project-content-wrap">
+              <div class="project-badge-row">
+                <span class="project-category-badge">Case Studies</span>
+                <span class="project-role-tag">Trust-Based Childcare UX</span>
+              </div>
+              <h3 class="project-title">Safe Nest Childcare</h3>
+              <p class="project-description">
+                Treats childcare as a risk decision rather than a transaction. Built around verified caregiver profiles, video introductions, and gradual commitment trial bookings.
+              </p>
+              <div class="project-card-actions">
+                <button type="button" class="project-cta" data-modal-target="safenestModal">
+                  <span>View Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 7: Delta Corporation (Digital Marketing / Case Studies) -->
+          <article class="project-card" data-category="digital-marketing case-studies">
+            <div class="project-image-wrap">
+              <img src="assets/images/project-delta-seo.jpg" alt="Delta Corporation search engine optimization campaign" width="400" height="280" loading="lazy">
+            </div>
+            <div class="project-content-wrap">
+              <div class="project-badge-row">
+                <span class="project-category-badge">Digital Marketing</span>
+                <span class="project-role-tag">SEO & Search Strategy</span>
+              </div>
+              <h3 class="project-title">Delta Corporation Search Audit</h3>
+              <p class="project-description">
+                Comprehensive search engine optimization audit targeting brand search visibility, keyword search intent mapping, and high-converting organic growth systems.
+              </p>
+              <div class="project-card-actions">
+                <button type="button" class="project-cta" data-modal-target="projectModal1">
+                  <span>View Audit</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </button>
+              </div>
             </div>
           </article>
         </div>
@@ -346,10 +488,35 @@
           <span class="title-underline"></span>
         </div>
 
-        <!-- Case Study 1: Delta Corporation SEO & Analytics -->
+        <!-- Case Study 1: Safe Nest -->
         <article class="case-study-item">
           <div class="case-study-media">
-            <img src="assets/images/project-digital-marketing.jpg" alt="Delta Corporation SEO Analysis">
+            <img src="assets/images/project-safe-nest.png" alt="Safe Nest Marketplace UX" loading="lazy">
+          </div>
+          <div class="case-study-content">
+            <span class="case-study-badge">UX Research & Product Design</span>
+            <h3 class="case-study-title">Safe Nest: Childcare Trust Marketplace</h3>
+            <p class="case-study-text">
+              Unlike traditional childcare apps that treat bookings as transactions, Safe Nest solves for emotional and psychological risk. Designed through parent interviews (Persona: Sarah, 34) featuring caregiver verification, short trial bookings, and community trust signals.
+            </p>
+            <div class="case-study-metrics">
+              <div class="metric-box">
+                <span class="metric-number">5 Pillars</span>
+                <span class="metric-label">Trust Architecture</span>
+              </div>
+              <div class="metric-box">
+                <span class="metric-number">Trial Model</span>
+                <span class="metric-label">Low-Risk Commitment</span>
+              </div>
+            </div>
+            <button type="button" class="btn btn-outline" style="margin-top: 10px;" data-modal-target="safenestModal">Read UX Case Study</button>
+          </div>
+        </article>
+
+        <!-- Case Study 2: Delta Corporation SEO -->
+        <article class="case-study-item reverse">
+          <div class="case-study-media">
+            <img src="assets/images/project-delta-seo.jpg" alt="Delta Corporation SEO Analysis" loading="lazy">
           </div>
           <div class="case-study-content">
             <span class="case-study-badge">SEO & Content Strategy</span>
@@ -371,16 +538,16 @@
           </div>
         </article>
 
-        <!-- Case Study 2: Samaita Meats Brand Identity & Collateral -->
-        <article class="case-study-item reverse">
+        <!-- Case Study 3: Samaita Meats -->
+        <article class="case-study-item">
           <div class="case-study-media">
-            <img src="assets/images/project-product-design.png" alt="Samaita Meats Brand Collateral">
+            <img src="assets/images/project-samaita-meats.png" alt="Samaita Meats Brand Collateral" loading="lazy">
           </div>
           <div class="case-study-content">
             <span class="case-study-badge">Product & Brand Design</span>
             <h3 class="case-study-title">Samaita Meats Brand Identity & Print System</h3>
             <p class="case-study-text">
-              Crafted a complete brand identity book, marketing flyers, business cards, and social collateral that translated customer trust and farm freshness into high-converting retail assets.
+              Crafted a complete brand identity book, marketing flyers, business cards, and social collateral that translated customer trust and farm freshness into high-converting retail assets under the banner “Fresh cuts, trusted quality.”
             </p>
             <div class="case-study-metrics">
               <div class="metric-box">
@@ -396,16 +563,16 @@
           </div>
         </article>
 
-        <!-- Case Study 3: Glent Worth Farm Digital Presence -->
-        <article class="case-study-item">
+        <!-- Case Study 4: Glent Worth Farm -->
+        <article class="case-study-item reverse">
           <div class="case-study-media">
-            <img src="assets/images/project-case-studies.png" alt="Glent Worth Farm Web & Digital Strategy">
+            <img src="assets/images/project-glentworth.png" alt="Glent Worth Farm Web & Digital Strategy" loading="lazy">
           </div>
           <div class="case-study-content">
             <span class="case-study-badge">Web Strategy & Showcase</span>
             <h3 class="case-study-title">Glent Worth Farm Digital Experience</h3>
             <p class="case-study-text">
-              Designed a responsive website showcase and digital ordering system for a heritage farm in Norton, Zimbabwe, emphasizing organic produce, venue hosting, and direct customer engagement.
+              Designed and deployed a responsive website showcase and digital ordering system for a heritage farm in Norton, Zimbabwe, emphasizing organic produce, venue hosting, and direct WhatsApp customer engagement.
             </p>
             <div class="case-study-metrics">
               <div class="metric-box">
@@ -417,7 +584,10 @@
                 <span class="metric-label">WhatsApp Channel</span>
               </div>
             </div>
-            <button type="button" class="btn btn-outline" style="margin-top: 10px;" data-modal-target="projectModal3">View Full Case Study</button>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+              <a href="https://glent-worth.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Live Site &nearr;</a>
+              <button type="button" class="btn btn-outline" data-modal-target="projectModal3">View Showcase Details</button>
+            </div>
           </div>
         </article>
       </div>
@@ -435,49 +605,55 @@
             <span class="title-underline"></span>
           </div>
 
-          <form class="contact-form" id="contactForm">
+          <form class="contact-form" id="contactForm" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="userName" class="form-label">Name</label>
-                <input type="text" id="userName" name="name" class="form-input" placeholder="Sarah Doe" required>
+                <input type="text" id="userName" name="name" class="form-input" placeholder="Sarah Doe" required autocomplete="name">
               </div>
               <div class="form-group">
                 <label for="userEmail" class="form-label">Email</label>
-                <input type="email" id="userEmail" name="email" class="form-input" placeholder="sarahdoe@gmail.com" required>
+                <input type="email" id="userEmail" name="email" class="form-input" placeholder="sarahdoe@gmail.com" required autocomplete="email">
               </div>
             </div>
 
             <div class="form-group">
               <label for="userMessage" class="form-label">Message</label>
-              <textarea id="userMessage" name="message" class="form-textarea" placeholder="Tell me more about your Brand" required></textarea>
+              <textarea id="userMessage" name="message" class="form-textarea" placeholder="Tell me more about your brand or project" required></textarea>
             </div>
 
             <div class="form-actions">
               <button type="submit" class="btn-send">
                 <span>Send Message</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                   <line x1="22" y1="2" x2="11" y2="13"></line>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
               </button>
             </div>
-            <p class="form-feedback" id="formFeedback"></p>
+            <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
           </form>
         </div>
 
         <!-- Right: Message / CTA -->
         <div class="contact-info-col">
-          <h3 class="contact-headline">Let`s build something that grows.</h3>
+          <h3 class="contact-headline">Let’s build something that grows.</h3>
           <p class="contact-subtext">
             Whether it’s a campaign, social media or a rebrand — I’d love to hear about it.
           </p>
           <div class="contact-details-list">
             <div class="contact-detail-item">
-              <a href="mailto:muzhanyekresia@gmail.com">muzhanyekresia@gmail.com</a>
+              <span class="detail-label">Email:</span>
+              <a href="mailto:muzhanyekresia@gmail.com" class="contact-link">muzhanyekresia@gmail.com</a>
             </div>
             <div class="contact-detail-item">
-              <a href="https://wa.me/263774102301" target="_blank" rel="noopener">+263774102301</a> | 
-              <a href="https://wa.me/263719102310" target="_blank" rel="noopener">+263719102310</a>
+              <span class="detail-label">Phone & WhatsApp:</span>
+              <a href="tel:+263774102310" class="contact-link">+263 774 102 310</a>
+              <span class="sep-dot">&bull;</span>
+              <a href="https://wa.me/263774102310" target="_blank" rel="noopener noreferrer" class="contact-link whatsapp-pill">
+                <span>Chat on WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.074-1.127-.064-.27-.087-.621-.212-1.074-.408-1.914-.828-3.159-2.769-3.255-2.898-.095-.127-.777-1.034-.777-1.971 0-.938.491-1.399.666-1.591.175-.192.381-.24.508-.24.127 0 .253.002.364.007.117.006.274-.044.428.328.16.386.54 1.317.587 1.413.048.096.08.208.016.335-.064.127-.096.207-.19.32-.096.111-.202.249-.289.335-.095.096-.195.199-.084.39.112.191.498.822 1.07 1.332.736.656 1.357.859 1.549.954.191.096.303.08.414-.048.112-.127.477-.557.604-.748.127-.19.254-.159.428-.096.175.064 1.111.524 1.302.62.19.095.318.143.365.222.048.08.048.461-.096.866z"/></svg>
+              </a>
             </div>
             <div class="contact-detail-item location">
               Harare, Zimbabwe
@@ -511,6 +687,7 @@
             <li class="footer-link-item bullet"><a href="#about">About</a></li>
             <li class="footer-link-item bullet"><a href="#services">Services</a></li>
             <li class="footer-link-item bullet"><a href="#projects">Projects</a></li>
+            <li class="footer-link-item bullet"><a href="#case-studies">Case Studies</a></li>
             <li class="footer-link-item bullet"><a href="#contact">Contact</a></li>
           </ul>
         </div>
@@ -520,7 +697,9 @@
           <h4 class="footer-col-title with-line">Services</h4>
           <ul class="footer-links-list">
             <li class="footer-link-item bullet"><a href="#services">Social Media Marketing</a></li>
+            <li class="footer-link-item bullet"><a href="#services">Search Engine Optimization</a></li>
             <li class="footer-link-item bullet"><a href="#services">Creative Marketing</a></li>
+            <li class="footer-link-item bullet"><a href="#services">Marketing Strategy</a></li>
             <li class="footer-link-item bullet"><a href="#services">Paid Advertising</a></li>
             <li class="footer-link-item bullet"><a href="#services">Content Marketing</a></li>
           </ul>
@@ -531,27 +710,39 @@
           <h4 class="footer-col-title with-line">Connect</h4>
           <ul class="footer-links-list">
             <li class="footer-link-item">
-              <a href="https://github.com" target="_blank" rel="noopener" class="footer-social-link">
-                <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                <span>Github</span>
+              <a href="https://www.linkedin.com/in/kresia-tanyaradzwa-muzhanye-00634527a" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn profile">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>LinkedIn</span>
               </a>
             </li>
             <li class="footer-link-item">
-              <a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-social-link">
-                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                <span>Linkedin</span>
+              <a href="https://github.com/muzhanyekresia-lady" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub profile">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub</span>
               </a>
             </li>
             <li class="footer-link-item">
-              <a href="https://facebook.com" target="_blank" rel="noopener" class="footer-social-link">
-                <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 16 5h2V0h-3.8C10.5 0 9 1.5 9 4.667V8z"/></svg>
-                <span>Facebook</span>
+              <a href="https://wa.me/263774102310" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="WhatsApp chat">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.074-1.127-.064-.27-.087-.621-.212-1.074-.408-1.914-.828-3.159-2.769-3.255-2.898-.095-.127-.777-1.034-.777-1.971 0-.938.491-1.399.666-1.591.175-.192.381-.24.508-.24.127 0 .253.002.364.007.117.006.274-.044.428.328.16.386.54 1.317.587 1.413.048.096.08.208.016.335-.064.127-.096.207-.19.32-.096.111-.202.249-.289.335-.095.096-.195.199-.084.39.112.191.498.822 1.07 1.332.736.656 1.357.859 1.549.954.191.096.303.08.414-.048.112-.127.477-.557.604-.748.127-.19.254-.159.428-.096.175.064 1.111.524 1.302.62.19.095.318.143.365.222.048.08.048.461-.096.866z"/></svg>
+                <span>WhatsApp</span>
               </a>
             </li>
             <li class="footer-link-item">
-              <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-social-link">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.79-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <a href="mailto:muzhanyekresia@gmail.com" class="footer-social-link" aria-label="Send Email">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span>Email</span>
+              </a>
+            </li>
+            <li class="footer-link-item" id="footerInstagramItem">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram profile" id="socialLinkInstagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.79-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 <span>Instagram</span>
+              </a>
+            </li>
+            <li class="footer-link-item" id="footerBehanceItem">
+              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Behance profile" id="socialLinkBehance">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.726 3-3.181 0-5.5-2.222-5.5-5.5s2.319-5.5 5.5-5.5c3.311 0 5.271 2.302 5.068 5.688h-7.89c.144 1.579 1.411 2.562 2.822 2.562 1.328 0 2.115-.595 2.529-1.45h2.297zm-4.976-5.2c-1.121 0-2.062.668-2.311 1.95h4.639c-.105-1.189-.968-1.95-2.328-1.95zm-11.75 5.2h-3v-12h4.5c2.485 0 4.5 1.791 4.5 4 0 1.341-.745 2.524-1.854 3.197 1.438.647 2.354 1.939 2.354 3.553 0 2.485-2.015 4.5-4.5 4.5h-2zm0-4.5h1.5c1.105 0 2-.895 2-2s-.895-2-2-2h-1.5v4zm0-6h1.5c.828 0 1.5-.672 1.5-1.5s-.672-1.5-1.5-1.5h-1.5v3z"/></svg>
+                <span>Behance</span>
               </a>
             </li>
           </ul>
@@ -559,7 +750,7 @@
       </div>
 
       <div class="footer-bottom">
-        © 2026 Tanya. Crafted with creativity and curiosity.
+        &copy; 2026 Tanya. Crafted with creativity and curiosity.
       </div>
     </div>
   </footer>
@@ -568,11 +759,42 @@
        9. INTERACTIVE MODALS
        ========================================================================= -->
 
+  <!-- CV Viewer Modal -->
+  <div class="modal-backdrop" id="cvModal" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+    <div class="modal-dialog cv-modal-dialog">
+      <button class="modal-close-btn" data-modal-close aria-label="Close CV modal">&times;</button>
+      <div class="modal-header-compact">
+        <h3 id="cvModalTitle" style="font-size: 1.85rem; margin-bottom: 4px;">Curriculum Vitae</h3>
+        <p style="color: var(--color-cream-muted); font-size: 1.05rem;">
+          Tanya Muzhanye &mdash; Digital Marketing Specialist &amp; Product Designer
+        </p>
+      </div>
+
+      <div class="cv-embed-container">
+        <object data="assets/Tanya-CV.pdf" type="application/pdf" width="100%" height="100%">
+          <iframe src="assets/Tanya-CV.pdf" width="100%" height="100%" style="border:none;" title="CV PDF Viewer">
+            <p>Your browser does not support embedded PDF viewing. Please use the button below to view or download.</p>
+          </iframe>
+        </object>
+      </div>
+
+      <div class="cv-modal-actions">
+        <a href="assets/Tanya-CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="cvOpenTabBtn">
+          <span>Open Fullscreen in New Tab &nearr;</span>
+        </a>
+        <a href="assets/Tanya-CV.pdf" download="Tanya-Muzhanye-CV.pdf" class="btn btn-primary" id="cvModalDownloadBtn">
+          <span>Download PDF</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Contact Quick Modal -->
-  <div class="modal-backdrop" id="contactModal" role="dialog" aria-modal="true">
+  <div class="modal-backdrop" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
     <div class="modal-dialog">
-      <button class="modal-close-btn" data-modal-close aria-label="Close modal">✕</button>
-      <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Let's Talk</h3>
+      <button class="modal-close-btn" data-modal-close aria-label="Close contact modal">&times;</button>
+      <h3 id="contactModalTitle" style="font-size: 1.8rem; margin-bottom: 12px;">Let's Talk</h3>
       <p style="color: var(--color-cream-muted); margin-bottom: 24px; font-size: 1.05rem;">
         Reach out directly and I’ll get back to you as soon as possible.
       </p>
@@ -581,88 +803,204 @@
           <strong>Email:</strong> <a href="mailto:muzhanyekresia@gmail.com">muzhanyekresia@gmail.com</a>
         </div>
         <div class="contact-detail-item">
-          <strong>WhatsApp / Phone:</strong> <a href="https://wa.me/263774102301" target="_blank" rel="noopener">+263774102301</a> | <a href="https://wa.me/263719102310" target="_blank" rel="noopener">+263719102310</a>
+          <strong>WhatsApp / Phone:</strong> <a href="tel:+263774102310">+263 774 102 310</a>
+        </div>
+        <div class="contact-detail-item">
+          <strong>Direct WhatsApp:</strong> <a href="https://wa.me/263774102310" target="_blank" rel="noopener noreferrer">Chat on WhatsApp &rarr;</a>
         </div>
         <div class="contact-detail-item location">
           <strong>Location:</strong> Harare, Zimbabwe
         </div>
       </div>
-      <a href="assets/Tanya-CV.pdf" download class="btn btn-primary" style="width: 100%;">Download CV</a>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button type="button" class="btn btn-primary" data-modal-close onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});" style="flex: 1;">
+          Use Contact Form
+        </button>
+        <button type="button" class="btn btn-outline" data-modal-target="cvModal" style="flex: 1;">
+          View CV
+        </button>
+      </div>
     </div>
   </div>
 
   <!-- Story Modal -->
-  <div class="modal-backdrop" id="storyModal" role="dialog" aria-modal="true">
+  <div class="modal-backdrop" id="storyModal" role="dialog" aria-modal="true" aria-labelledby="storyModalTitle">
     <div class="modal-dialog">
-      <button class="modal-close-btn" data-modal-close aria-label="Close modal">✕</button>
-      <h3 style="font-size: 1.8rem; margin-bottom: 16px;">The Full Story</h3>
+      <button class="modal-close-btn" data-modal-close aria-label="Close story modal">&times;</button>
+      <h3 id="storyModalTitle" style="font-size: 1.8rem; margin-bottom: 16px;">The Full Story</h3>
       <p style="font-family: var(--font-editorial); font-size: 1.25rem; line-height: 1.6; margin-bottom: 16px;">
-        "I believe simple designs create the biggest impact. I love turning ideas into digital experiences."
+        &ldquo;I believe simple designs create the biggest impact. I love turning ideas into digital experiences.&rdquo;
       </p>
       <p style="color: var(--color-cream-muted); margin-bottom: 16px; line-height: 1.6;">
         From formulating early branding concepts to developing targeted SEO campaigns, I approach every project with curiosity, precision, and strategic intent.
       </p>
       <p style="color: var(--color-cream-muted); margin-bottom: 24px; line-height: 1.6;">
-        Working from Harare, Zimbabwe, I help local and international brands communicate with clarity, engage their core communities, and grow sustainably.
+        Working from Harare, Zimbabwe, I help local and international brands communicate with clarity, engage their core communities, and grow sustainably across digital channels.
       </p>
       <button type="button" class="btn btn-primary" data-modal-close>Back to Portfolio</button>
     </div>
   </div>
 
-  <!-- Project 1 Modal: Digital Marketing -->
-  <div class="modal-backdrop" id="projectModal1" role="dialog" aria-modal="true">
+  <!-- Do Right Contractors Modal -->
+  <div class="modal-backdrop" id="dorightModal" role="dialog" aria-modal="true" aria-labelledby="dorightModalTitle">
     <div class="modal-dialog">
-      <button class="modal-close-btn" data-modal-close aria-label="Close modal">✕</button>
-      <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Digital Marketing & SEO Strategy</h3>
-      <p style="font-size: 1.1rem; color: var(--color-cream); margin-bottom: 16px;">
-        Delta Corporation & Multi-channel Campaigns
+      <button class="modal-close-btn" data-modal-close aria-label="Close project modal">&times;</button>
+      <h3 id="dorightModalTitle" style="font-size: 1.8rem; margin-bottom: 10px;">Do Right Contractors</h3>
+      <p style="font-size: 1.05rem; color: var(--color-cream); margin-bottom: 14px;">
+        Sales &amp; Marketing Intern &bull; Fencing, Steel Fabrication &amp; Construction
       </p>
-      <img src="assets/images/project-digital-marketing.jpg" alt="Digital Marketing Campaign" style="border-radius: var(--radius-md); margin-bottom: 20px;">
+      <img src="assets/images/project-doright.png" alt="Do Right Contractors campaign flyer" style="border-radius: var(--radius-md); margin-bottom: 20px; width: 100%;">
+      <p style="color: var(--color-cream-muted); line-height: 1.6; margin-bottom: 16px;">
+        Supported lead-generation and promotional outreach for a registered construction and steel fabrication firm in Harare, Zimbabwe. Authored customer-focused copywriting, structured price lists, and built digital promotional flyers for residential and industrial security fencing.
+      </p>
+      <ul style="color: var(--color-cream); line-height: 1.8; margin-bottom: 24px; list-style: disc; padding-left: 20px;">
+        <li>Perimeter security and barbed-wire campaign copywriting (Ruwa project)</li>
+        <li>Customer follow-up tracking and client relationship management</li>
+        <li>Construction quotation and invoice preparation systems</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary" data-modal-close>Start a Marketing Project</a>
+    </div>
+  </div>
+
+  <!-- Endless Treats with Tee Modal -->
+  <div class="modal-backdrop" id="endlessModal" role="dialog" aria-modal="true" aria-labelledby="endlessModalTitle">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" data-modal-close aria-label="Close project modal">&times;</button>
+      <h3 id="endlessModalTitle" style="font-size: 1.8rem; margin-bottom: 10px;">Endless Treats with Tee</h3>
+      <p style="font-size: 1.05rem; color: var(--color-cream); margin-bottom: 14px;">
+        Brand &amp; Digital Marketing Strategy &bull; &ldquo;A bite out of sheer happiness!&rdquo;
+      </p>
+      <img src="assets/images/project-endless-treats.png" alt="Endless Treats with Tee brand visual" style="border-radius: var(--radius-md); margin-bottom: 20px; width: 100%;">
+      <p style="color: var(--color-cream-muted); line-height: 1.6; margin-bottom: 16px;">
+        Architected the visual identity, brand voice, and digital launch campaign for a vibrant confectionary and candy brand. Developed audience personas, weekly social content calendars for TikTok and Instagram, and an effortless WhatsApp ordering funnel.
+      </p>
+      <ul style="color: var(--color-cream); line-height: 1.8; margin-bottom: 24px; list-style: disc; padding-left: 20px;">
+        <li>Brand identity design &amp; aesthetic social packaging</li>
+        <li>SMART goals campaign planning (+100 loyal customer growth benchmark)</li>
+        <li>Direct-to-consumer WhatsApp catalog ordering workflow</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary" data-modal-close>Discuss Brand Strategy</a>
+    </div>
+  </div>
+
+  <!-- Project 1 Modal: Delta Corporation SEO -->
+  <div class="modal-backdrop" id="projectModal1" role="dialog" aria-modal="true" aria-labelledby="deltaModalTitle">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" data-modal-close aria-label="Close modal">&times;</button>
+      <h3 id="deltaModalTitle" style="font-size: 1.8rem; margin-bottom: 12px;">Delta Corporation Search &amp; Visibility Audit</h3>
+      <p style="font-size: 1.1rem; color: var(--color-cream); margin-bottom: 16px;">
+        SEO, Keyword Intent Mapping &amp; Content Strategy
+      </p>
+      <img src="assets/images/project-delta-seo.jpg" alt="Delta Corporation Campaign" style="border-radius: var(--radius-md); margin-bottom: 20px; width: 100%;">
       <p style="color: var(--color-cream-muted); line-height: 1.6; margin-bottom: 16px;">
         Designed comprehensive digital marketing funnels encompassing keyword search intent mapping, technical SEO audits, Meta ad sets, and conversion-focused content workflows.
       </p>
       <ul style="color: var(--color-cream); line-height: 1.8; margin-bottom: 20px; list-style: disc; padding-left: 20px;">
-        <li>Search Engine Optimization & Keyword Mapping</li>
-        <li>Paid Meta Advertising & Audience Segmentation</li>
-        <li>Data Analytics & Multi-channel Reporting</li>
+        <li>Search Engine Optimization &amp; Keyword Intent Mapping</li>
+        <li>Paid Meta Advertising &amp; Audience Segmentation</li>
+        <li>Data Analytics &amp; Organic Growth Reporting</li>
       </ul>
       <a href="#contact" class="btn btn-primary" data-modal-close>Discuss Similar Project</a>
     </div>
   </div>
 
-  <!-- Project 2 Modal: Product Design -->
-  <div class="modal-backdrop" id="projectModal2" role="dialog" aria-modal="true">
+  <!-- Project 2 Modal: Samaita Meats -->
+  <div class="modal-backdrop" id="projectModal2" role="dialog" aria-modal="true" aria-labelledby="samaitaModalTitle">
     <div class="modal-dialog">
-      <button class="modal-close-btn" data-modal-close aria-label="Close modal">✕</button>
-      <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Samaita Meats Product & Brand Collateral</h3>
+      <button class="modal-close-btn" data-modal-close aria-label="Close modal">&times;</button>
+      <h3 id="samaitaModalTitle" style="font-size: 1.8rem; margin-bottom: 12px;">Samaita Meats Brand Identity</h3>
       <p style="font-size: 1.1rem; color: var(--color-cream); margin-bottom: 16px;">
-        Brand Guidelines, Packaging & Promotional Design
+        Brand Book, Packaging &amp; Promotional System &bull; &ldquo;Fresh cuts, trusted quality.&rdquo;
       </p>
-      <img src="assets/images/project-product-design.png" alt="Samaita Meats Design Assets" style="border-radius: var(--radius-md); margin-bottom: 20px;">
+      <img src="assets/images/project-samaita-meats.png" alt="Samaita Meats Design Assets" style="border-radius: var(--radius-md); margin-bottom: 20px; width: 100%;">
       <p style="color: var(--color-cream-muted); line-height: 1.6; margin-bottom: 16px;">
-        Crafted a cohesive visual identity for a trusted local butchery, including brand style guide, promotional flyers, menu cards, and digital marketing materials.
+        Crafted a cohesive visual identity for a trusted local butchery, including brand style guide, promotional flyers, menu cards, and digital marketing materials that translate customer trust into high-converting retail assets.
       </p>
+      <ul style="color: var(--color-cream); line-height: 1.8; margin-bottom: 20px; list-style: disc; padding-left: 20px;">
+        <li>Complete brand style guide and typography standards</li>
+        <li>Print-ready promotional posters and retail butcher cards</li>
+        <li>Digital social media launch collateral</li>
+      </ul>
       <a href="#contact" class="btn btn-primary" data-modal-close>Start a Design Project</a>
     </div>
   </div>
 
-  <!-- Project 3 Modal: Case Studies -->
-  <div class="modal-backdrop" id="projectModal3" role="dialog" aria-modal="true">
+  <!-- Project 3 Modal: Glent Worth Farm -->
+  <div class="modal-backdrop" id="projectModal3" role="dialog" aria-modal="true" aria-labelledby="glentModalTitle">
     <div class="modal-dialog">
-      <button class="modal-close-btn" data-modal-close aria-label="Close modal">✕</button>
-      <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Glent Worth Farm Case Study</h3>
+      <button class="modal-close-btn" data-modal-close aria-label="Close modal">&times;</button>
+      <h3 id="glentModalTitle" style="font-size: 1.8rem; margin-bottom: 12px;">Glent Worth Farm Digital Experience</h3>
       <p style="font-size: 1.1rem; color: var(--color-cream); margin-bottom: 16px;">
-        Farm Showcase & Direct Customer Engagement Platform
+        Farm Showcase, Product Catalog &amp; Direct Engagement Platform
       </p>
-      <img src="assets/images/project-case-studies.png" alt="Glent Worth Farm Showcase" style="border-radius: var(--radius-md); margin-bottom: 20px;">
+      <img src="assets/images/project-glentworth.png" alt="Glent Worth Farm Showcase" style="border-radius: var(--radius-md); margin-bottom: 20px; width: 100%;">
       <p style="color: var(--color-cream-muted); line-height: 1.6; margin-bottom: 16px;">
-        Engineered an end-to-end digital experience highlighting sustainable farming, premium meats, organic mushrooms, and event bookings with integrated WhatsApp lead capture.
+        Engineered an end-to-end digital experience highlighting sustainable farming, premium meats, organic mushrooms, and event venue bookings with integrated WhatsApp lead capture.
       </p>
-      <a href="#contact" class="btn btn-primary" data-modal-close>Work Together</a>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://glent-worth.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Visit Live Website &nearr;</a>
+        <a href="#contact" class="btn btn-outline" data-modal-close>Work Together</a>
+      </div>
     </div>
   </div>
 
-  <!-- Vanilla JavaScript (Relative Path) -->
+  <!-- Vivid Horizons Modal -->
+  <div class="modal-backdrop" id="vividModal" role="dialog" aria-modal="true" aria-labelledby="vividModalTitle">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" data-modal-close aria-label="Close modal">&times;</button>
+      <h3 id="vividModalTitle" style="font-size: 1.8rem; margin-bottom: 12px;">Vivid Horizons Zimbabwe</h3>
+      <p style="font-size: 1.1rem; color: var(--color-cream); margin-bottom: 16px;">
+        Travel Agency Landing Page &bull; Product Design
+      </p>
+      <img src="assets/images/project-vivid-horizons.png" alt="Vivid Horizons Zimbabwe design preview" style="border-radius: var(--radius-md); margin-bottom: 20px; width: 100%;">
+      <p style="color: var(--color-cream-muted); line-height: 1.6; margin-bottom: 16px;">
+        User experience, visual hierarchy, and interface design for a modern Zimbabwean travel agency. Created an immersive landing page concept spotlighting curated safari packages, national park excursions, and straightforward inquiry booking.
+      </p>
+      <ul style="color: var(--color-cream); line-height: 1.8; margin-bottom: 20px; list-style: disc; padding-left: 20px;">
+        <li>Information architecture &amp; clear safari package comparison</li>
+        <li>Rich imagery layout and editorial typography hierarchy</li>
+        <li>High-contrast mobile booking call-to-actions</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary" data-modal-close>Collaborate on Product Design</a>
+    </div>
+  </div>
+
+  <!-- Safe Nest UX Case Study Modal -->
+  <div class="modal-backdrop" id="safenestModal" role="dialog" aria-modal="true" aria-labelledby="safenestModalTitle">
+    <div class="modal-dialog" style="max-width: 720px;">
+      <button class="modal-close-btn" data-modal-close aria-label="Close modal">&times;</button>
+      <h3 id="safenestModalTitle" style="font-size: 1.85rem; margin-bottom: 10px;">Safe Nest &mdash; Childcare Trust Marketplace</h3>
+      <p style="font-size: 1.1rem; color: var(--color-cream); margin-bottom: 16px;">
+        UX Research, Trust Architecture &amp; Product Design Case Study
+      </p>
+      <img src="assets/images/project-safe-nest.png" alt="Safe Nest Marketplace UX" style="border-radius: var(--radius-md); margin-bottom: 20px; width: 100%;">
+      
+      <div style="color: var(--color-cream-muted); line-height: 1.65; margin-bottom: 20px;">
+        <h4 style="color: var(--color-light-pure); font-size: 1.25rem; margin: 16px 0 8px;">The Core Problem: Trust, Not Usability</h4>
+        <p style="margin-bottom: 12px;">
+          Parents need a safe and trustworthy way to hire childcare online, but trusting a stranger with their child feels risky. Traditional childcare platforms fail because they treat childcare as a quick transaction. Safe Nest treats childcare as a <strong>psychological risk decision</strong>.
+        </p>
+
+        <h4 style="color: var(--color-light-pure); font-size: 1.25rem; margin: 16px 0 8px;">User Persona: Sarah (Age 34, Marketing Manager)</h4>
+        <p style="margin-bottom: 12px;">
+          Sarah works full-time and struggles to balance work and parenting. When interviewed, Sarah noted: <em>&ldquo;My biggest fear is leaving my child with someone who isn't trustworthy. I'd want background checks, video introductions, and references from families like mine.&rdquo;</em>
+        </p>
+
+        <h4 style="color: var(--color-light-pure); font-size: 1.25rem; margin: 16px 0 8px;">The 5 Trust Pillars of Safe Nest</h4>
+        <ul style="color: var(--color-cream); line-height: 1.8; list-style: disc; padding-left: 20px; margin-bottom: 16px;">
+          <li><strong>Trust-First Design:</strong> Rigorous verification before visibility &mdash; only approved caregivers appear in search.</li>
+          <li><strong>Humanized Profiles:</strong> Video intros from caregivers displaying caregiving philosophy.</li>
+          <li><strong>Trial Bookings:</strong> Short, low-pressure sessions before long-term commitment.</li>
+          <li><strong>Community Trust Signals:</strong> Verified parent reviews and reference validation.</li>
+          <li><strong>Gradual Commitment Model:</strong> Discovery &rarr; Trial Session &rarr; Long-term Hire.</li>
+        </ul>
+      </div>
+
+      <a href="#contact" class="btn btn-primary" data-modal-close>Discuss UX / Product Design</a>
+    </div>
+  </div>
+
+  <!-- Vanilla JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
